@@ -5,15 +5,26 @@ import {TodoItem} from './components/TodoItem';
 import {TodoList} from './components/TodoList';
 import {TodoSearch} from './components/TodoSearch';
 
+const lista = [
+  {action:"accion 1",completed:true},
+  {action:"accion 2",completed:false},
+  {action:"accion 3",completed:true},
+  {action:"accion 4",completed:true}
+]
+
 function App() {
   return (
     <>
-      <TodoCounter/>
+      <TodoCounter completed={1} total={5} />
       <TodoSearch/>
       <TodoList>
-        <TodoItem/>
-        <TodoItem/>
-        <TodoItem/>
+        {lista.map(todo =>(
+          <TodoItem 
+            key={todo.action}
+            action={todo.action}
+            completed={todo.completed}
+          />
+        ))}
       </TodoList>
       <CreateTodoButton/>
     </>
